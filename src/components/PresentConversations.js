@@ -1,12 +1,13 @@
 import  React from 'react';
 import { Typography , Grid} from '@mui/material'
+import CurrentConversation from './CurrentConversation'
 
 function PresentConversations() {
     return (
       <>
         <Grid container>
-            <Grid item md = {12} style = {{minHeight : "90vh", borderLeft : "2px solid #C1C1C1"}} >
-              
+            <Grid item md = {12} style = {{minHeight : "90vh", backgroundColor : "#EAEEF3"}} >
+                <CurrentConversation/>
             </Grid>
         </Grid>
       </>
