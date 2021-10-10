@@ -6,7 +6,7 @@ function NewConversation() {
     return (
       <>
         <Grid container>
-                <Grid item md = {12} style = {{border : "2px solid black", minHeight : "80vh"}}>
+                <Grid item md = {12} xs = {12} sm = {12} style = {{ minHeight : "80vh"}}>
                     <h1>Start new chat</h1>
                 </Grid>
         </Grid>

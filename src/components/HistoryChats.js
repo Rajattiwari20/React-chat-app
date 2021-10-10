@@ -37,10 +37,10 @@ function HistoryChats() {
         <Grid container>
             {
                 messages &&
-                messages.map((message)=>{
+                messages.map((message, index)=>{
                     return(
                        
-                        <Grid item md = {12} sm = {12} xs = {12} style = {{ marginTop : "10px" , padding : "10px"}} >
+                        <Grid item md = {12} sm = {12} xs = {12} style = {{ marginTop : "10px" , padding : "10px"}}  key ={index}>
                              <Button fullWidth className = {classes.historyBtn} >
                             <Grid container >
                                 <Grid item md ={3}>
@@ -60,7 +60,7 @@ function HistoryChats() {
                                   </Grid>
                                 }
                                 <Grid item md ={12} style ={{textAlign :"center"}}>
-                                    {message.text}
+                                    {message.messageRecived}
                                 </Grid>
                             </Grid>
                             </Button>
