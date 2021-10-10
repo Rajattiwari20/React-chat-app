@@ -1,11 +1,12 @@
 import  React, { useState , useEffect} from 'react';
-import { Typography , Grid} from '@mui/material'
+import { Typography , Grid , Avatar , Box} from '@mui/material'
 import SendNewMessage from './SendNewMessage'
 import NewConversation from './NewConversation'
 import dummyData from '../data'
 
 function CurrentConversation() {
 
+    const [data, setdata] = useState()
     const [value , setValue] = useState()
     const [senderMessage , setSenderMessage] = useState()
     const [messages , setMessages] = useState()
@@ -15,10 +16,13 @@ function CurrentConversation() {
         dummyData.map((data) =>{
             if(data.isLogedIn){
                 setMessages(data.messages)
-                // setShowMessage(data.currentMessage)
+                setdata(data)
             }
+            
         })
     }, [])
+
+    console.log("messages ==>" , messages)
 
         const handelClick = () =>{
             console.log("senderMessage ==> " , senderMessage)
@@ -26,25 +30,43 @@ function CurrentConversation() {
             setValue('')
         }
 
-        console.log("newMessage" , newMessage)
     return (
       <>
         <Grid container>
             {
                 messages &&
                 messages.length > 0 ?
-                <Grid item md = {12} xs = {12} sm = {12}style = {{ minHeight : "80vh"}}>
+                <Grid item md = {12} xs = {12} sm = {12}style = {{ minHeight : "80vh" , padding : "10px"}}>
                     {
                          messages.map((message , index) =>{
                              return(
-                                 <p key ={index}>{message.messageRecived} </p>
+                                 <>
+                                {
+                                message.senderInfo.id === 2 &&
+                                message.messageRecived.map((text, index) =>{
+                                    return(
+                                        <Grid container style ={{marginTop : "10px" }} >
+                                        <Grid item md ={0}>
+                                            <Avatar alt="Pic" src= {message.senderInfo.photo} />
+                                        </Grid>
+                                        <Grid item md ={7}>
+                                        <h4 key ={index} style ={{marginLeft: "10px" , marginTop : "10px" }} >{text} </h4>
+                                        </Grid>
+                                        </Grid>
+                                    )
+                                } )
+                               
+                                }
+                                 </>
                              )
                          })
                     }
                     {   
                          newMessage.map((message , index) =>{
                              return(
-                                 <p key ={index} style ={{textAlign : "right"}} >{message}</p>
+                                 <>
+                                <h4 key ={index} style ={{marginLeft: "10px" , marginTop : "10px" , textAlign : "right"}} >{message} </h4>  
+                                </>
                              )
                          })
                     }
@@ -57,7 +79,12 @@ function CurrentConversation() {
             }
            
             <Grid item md = {12} xs = {12} sm = {12}>
-                <SendNewMessage setSenderMessage={setSenderMessage}  handelClick ={handelClick} value ={value} setValue ={setValue} />
+                <SendNewMessage setSenderMessage={setSenderMessage} 
+                 handelClick ={handelClick} 
+                 value ={value} 
+                 setValue ={setValue} 
+                 userData = {data}
+                 />
             </Grid>
         </Grid>
       </>

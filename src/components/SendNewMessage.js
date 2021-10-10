@@ -1,13 +1,17 @@
 import  React , {useState} from 'react';
-import { Typography , Grid,TextField , InputAdornment, Button} from '@mui/material'
+import { Typography , Grid,TextField , InputAdornment, Button, Avatar} from '@mui/material'
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
 function SendNewMessage(props) {
 
-    const {setSenderMessage , handelClick ,value , setValue} = props
+    const { setSenderMessage , 
+            handelClick ,
+            value , 
+            setValue,
+            userData} = props
 
-  
-    
+            console.log("userData" , userData)
+ 
     const handelChange = (e) =>{
         var newMessage = e.target.value
         setSenderMessage(
@@ -28,7 +32,7 @@ function SendNewMessage(props) {
                     InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
-                        <AccountCircle />
+                        {userData && <Avatar alt="Pic" src= {userData.photo} style = {{width : "30px" , height : "30px"}}/>}
                         </InputAdornment>
                     ),
                     }}

@@ -7,13 +7,13 @@ import CircleRoundedIcon from '@mui/icons-material/CircleRounded';
 const useStyles = makeStyles(theme => ({
 
     historyBtn: {
-        backgroundColor :"#EAEEF3",
+        backgroundColor :"#d8dbe3",
         color : "black",
         '&:hover' : {
             backgroundColor : "#EAEEF3"
         },
         '&:focus' : {
-            backgroundColor : "black",
+            backgroundColor : "#1976D2",
             color : "white"
         }
     }

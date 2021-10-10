@@ -8,7 +8,7 @@ function App() {
     <>
     <Grid container justifyContent = "center"  >
       <Grid item md = {11} sm = {11} xs = {10} style = {{minHeight : "90vh", marginTop : "15px"}} >
-        <Paper elevation={3} style = {{width : "100%" , height : "100%", padding : "10px" ,  backgroundColor:  "#FCFCFC"}} >
+        <Paper elevation={3} style = {{width : "100%" , height : "100%", padding : "10px" ,  backgroundColor:  "#383838"}} >
           <Grid container >
             <Grid item md = {3} sm = {12} xs = {12} >
               <Conversations/>
