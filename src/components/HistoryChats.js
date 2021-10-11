@@ -27,11 +27,12 @@ function HistoryChats(props) {
 
     const appContext = useContext(AppContext)
     const setNewMessage = appContext.value1
-       
-    const {searchString} = props
-    const [messages , setMessages] = useState()
+    const {searchString, filterMessages , setFilterMessages} = props
+    const [messages , setMessages] = useState([])
+   
     let history = useHistory()
-    useEffect(()=>{
+
+    useEffect(()=> {
         dummyData.map((data) =>{
             if(data.isLogedIn){
                 setMessages(data.messages)
@@ -39,22 +40,27 @@ function HistoryChats(props) {
         })
     }, [])
 
+    useEffect(() =>{
+        const newArray=messages.filter((message)=>{return(
+            message.senderInfo.userName
+            .toLowerCase()
+            .includes(searchString.toLowerCase())
+        )})
+        setFilterMessages(newArray)
+    }, [searchString])
+
+
     const handelClick = (path) =>{
         history.push(path)
         setNewMessage([])
     }
-    // console.log("messages ==>" ,messages)
-    // console.log("searchString===>" , searchString)   
-    // console.log("filterMessages ==>" , filterMessages)
-    // const filterMessages = messages.filter(message => message.senderInfo.userName ==  searchString)
-
     
     return (
       <>
         <Grid container>
             {
-                messages &&
-                messages.map((message, index)=>{
+                filterMessages &&
+                filterMessages.map((message, index)=>{
                     return(
                        
                         <Grid item md = {12} sm = {12} xs = {12} style = {{ marginTop : "5px" , padding : "10px"}}  key ={index}>

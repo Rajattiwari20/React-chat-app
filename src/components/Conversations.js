@@ -26,13 +26,15 @@ function Conversations(props) {
     const classes = useStyles();
     const [showConversationMoldel , setShowConversationMoldel] = useState(false)
     const [open, setOpen] = useState(false);
-    const [searchString , setSearchString] = useState();
+    const [searchString , setSearchString] = useState("");
     const [data , setData] = useState()
+    const [filterMessages, setFilterMessages] = useState([])
 
     useEffect(()=>{
         dummyData.map((data) =>{
             if(data.isLogedIn){
                 setData(data)
+                setFilterMessages(data.messages)
             }
         })
     }, [])
@@ -44,8 +46,7 @@ function Conversations(props) {
 
     const handelChange = (e) => {
         const search = e.target.value;
-        setSearchString(search);
-        // console.log("searchString===>" , searchString)
+        setSearchString(search); 
     }
 
     return (
@@ -84,7 +85,7 @@ function Conversations(props) {
                 </Grid>
             </Grid>
             <Grid item md = {12} style = {{marginTop : "10px"}}>
-                <HistoryChats  searchString = {searchString}/>
+                <HistoryChats  searchString = {searchString} setFilterMessages ={setFilterMessages} filterMessages ={filterMessages} />
             </Grid>
         </Grid>
         {

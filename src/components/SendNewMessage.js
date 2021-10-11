@@ -10,7 +10,7 @@ function SendNewMessage(props) {
             value , 
             setValue,
             userData} = props
-
+            
     const handelChange = (e) =>{
         var newMessage = e.target.value
         setSenderMessage(
