@@ -1,6 +1,7 @@
 import  React , {useState} from 'react';
 import { Typography , Grid,TextField , InputAdornment, Button, Avatar} from '@mui/material'
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import SendIcon from '@mui/icons-material/Send';
 
 function SendNewMessage(props) {
 
@@ -41,7 +42,7 @@ function SendNewMessage(props) {
                     style ={{width : "80%", marginLeft : "4%"}}
                     value = {value}
                 />
-                <Button variant="outlined" style = {{ marginTop :"10px", marginLeft : "2%"}} onClick = {handelClick} >Send</Button>
+                <Button variant="outlined" endIcon={<SendIcon />} style = {{ marginTop :"10px", marginLeft : "2%"}} onClick = {handelClick} >Send</Button>
             </Grid>
             </Grid>
             </Grid>

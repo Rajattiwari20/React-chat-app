@@ -19,8 +19,9 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-function HistoryChats() {
+function HistoryChats(props) {
     const classes = useStyles();
+    const {searchString} = props
     const [messages , setMessages] = useState()
     useEffect(()=>{
         dummyData.map((data) =>{
@@ -30,7 +31,16 @@ function HistoryChats() {
         })
     }, [])
 
+    const handelClick = () => {
+        console.log("Click")
+      }
+
     console.log("messages ==>" ,messages)
+    console.log("searchString===>" , searchString)
+   
+    // console.log("filterMessages ==>" , filterMessages)
+    // const filterMessages = messages.filter(message => message.senderInfo.userName ==  searchString)
+
     
     return (
       <>
@@ -40,7 +50,7 @@ function HistoryChats() {
                 messages.map((message, index)=>{
                     return(
                        
-                        <Grid item md = {12} sm = {12} xs = {12} style = {{ marginTop : "10px" , padding : "10px"}}  key ={index}>
+                        <Grid item md = {12} sm = {12} xs = {12} style = {{ marginTop : "5px" , padding : "10px"}}  key ={index}>
                              <Button fullWidth className = {classes.historyBtn} >
                             <Grid container >
                                 <Grid item md ={3}>

@@ -1,7 +1,8 @@
-import  React , {useState} from 'react';
+import  React , {useState, useEffect} from 'react';
 import { TextField , Grid, InputAdornment, Typography, Button, Box , Fab} from '@mui/material'
 import dummyData from '../data'
 import HistoryChats from './HistoryChats'
+import AdminDetail from './AdminDetail'
 import CoversationModel from './CoversationModel'
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
@@ -19,20 +20,41 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
+
+
 function Conversations() {
   
     const classes = useStyles();
     const [showConversationMoldel , setShowConversationMoldel] = useState(false)
     const [open, setOpen] = useState(false);
+    const [searchString , setSearchString] = useState();
+    const [data , setData] = useState()
+
+    useEffect(()=>{
+        dummyData.map((data) =>{
+            if(data.isLogedIn){
+                setData(data)
+            }
+        })
+    }, [])
 
     const handelClick = () => {
         setOpen(true);
         setShowConversationMoldel(true)
       };
 
+    const handelChange = (e) => {
+        const search = e.target.value;
+        setSearchString(search);
+        // console.log("searchString===>" , searchString)
+    }
+
     return (
       <>
         <Grid container >
+            <Grid item md = {12}>
+                <AdminDetail data = {data}/>
+            </Grid>
             <Grid item md = {12}  >
                  <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                     <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} style ={{color : "white"}} />
@@ -43,7 +65,9 @@ function Conversations() {
                         className: classes.historyBtn
                     }}
                     InputProps={{className: classes.historyBtn}}
+                    onChange = {(e) => handelChange(e)}
                      />
+                    
                 </Box>
             </Grid>
             <Grid item md = {12} style = {{marginTop : "20px"}}>
@@ -61,7 +85,7 @@ function Conversations() {
                 </Grid>
             </Grid>
             <Grid item md = {12} style = {{marginTop : "10px"}}>
-                <HistoryChats/>
+                <HistoryChats  searchString = {searchString}/>
             </Grid>
         </Grid>
         {
