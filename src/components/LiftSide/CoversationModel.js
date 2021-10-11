@@ -1,3 +1,4 @@
+// used martial ui dialog to show all the contacts
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
@@ -9,7 +10,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import { TextField , Grid, InputAdornment, Typography, Button, Avatar} from '@mui/material'
-import dummyData from '../data'
+import dummyData from '../../data'
 import {useHistory} from 'react-router-dom'
 
 
@@ -56,10 +57,12 @@ export default function CoversationModel(props) {
   const {open , setOpen} = props
   let history = useHistory()
   
+  // will close the model
   const handleClose = () => {
     setOpen(false);
   };
 
+  //on click will redirect to specific path using useHistory provided by react-router-dom and close the model
   const handleClick = (data) =>{
     history.push("user"+data.id)
     setOpen(false);

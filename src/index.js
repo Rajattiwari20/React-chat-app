@@ -6,6 +6,7 @@ import { BrowserRouter} from 'react-router-dom';
 
 
 ReactDOM.render(
+  //BrowserRouter is used for doing client side routing 
   <BrowserRouter>
         <App />
     </BrowserRouter>,

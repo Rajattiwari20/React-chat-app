@@ -1,6 +1,6 @@
 import  React , {useState, useEffect} from 'react';
 import { TextField , Grid, InputAdornment, Typography, Button, Box , Fab} from '@mui/material'
-import dummyData from '../data'
+import dummyData from '../../data'
 import HistoryChats from './HistoryChats'
 import AdminDetail from './AdminDetail'
 import CoversationModel from './CoversationModel'
@@ -17,9 +17,7 @@ const useStyles = makeStyles(theme => ({
             color : "white"
         }
     }
-
 }))
-
 
 function Conversations(props) {
   
@@ -30,6 +28,7 @@ function Conversations(props) {
     const [data , setData] = useState()
     const [filterMessages, setFilterMessages] = useState([])
 
+    //set the data and filter messages from dummy data
     useEffect(()=>{
         dummyData.map((data) =>{
             if(data.isLogedIn){
@@ -39,11 +38,13 @@ function Conversations(props) {
         })
     }, [])
 
+    // on click it will open new model which will show all the contact list
     const handelClick = () => {
         setOpen(true);
         setShowConversationMoldel(true)
       };
 
+    //  storing the user search in search variable and the updating state
     const handelChange = (e) => {
         const search = e.target.value;
         setSearchString(search); 
@@ -88,6 +89,8 @@ function Conversations(props) {
                 <HistoryChats  searchString = {searchString} setFilterMessages ={setFilterMessages} filterMessages ={filterMessages} />
             </Grid>
         </Grid>
+
+        {/* CoversationModel will show all the contact list */}
         {
             showConversationMoldel &&
             <CoversationModel open = {open} setOpen ={setOpen}/>

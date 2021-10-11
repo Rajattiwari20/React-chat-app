@@ -1,6 +1,7 @@
 import  React, { useState } from 'react';
 import { Typography , Grid} from '@mui/material'
 
+// if there is no pervious chat show NewConversation component
 function NewConversation() {
 
     return (

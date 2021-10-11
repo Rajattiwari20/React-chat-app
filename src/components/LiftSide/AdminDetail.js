@@ -3,9 +3,8 @@ import { Typography , Grid, Avatar, Button} from '@mui/material'
 import {useHistory} from 'react-router-dom'
 
 function AdminDetail(props) {
-
+  // show all the relevant information related to admin or the logedIn user
   const {data} = props
-
   let history = useHistory()
   const handelClick = () =>{
     history.push("/")

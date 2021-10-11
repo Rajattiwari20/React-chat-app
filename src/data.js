@@ -1,3 +1,12 @@
+ //dummy data => array of objects each object have 
+ //userID string
+//  userName string
+//  newMessage array
+//  messages  array of object
+// contactNo String
+// isLogedIn boolean and 
+// photo string
+
  const dummyData = [
     {
         id: "1",
@@ -9,7 +18,8 @@
                 userName : "Prapti Pandey",
                 isOnline : false,
                 id : 3,
-                path : "user3"
+                path : "user3",
+                timestamp: "12:20" //time of latest message send
             },
             messageRecived : ["hey bro" , "how are you..."],
 
@@ -20,7 +30,8 @@
                 userName : "Tanya Pandey",
                 isOnline : false,
                 id : 4,
-                path : "user4"
+                path : "user4",
+                timestamp: "1:00"
             },
             messageRecived : ["Good morning Rajat" , "I hope you're doing good", "Please share your resume"],
         },
@@ -30,7 +41,8 @@
                 userName : "Ashish Tyagi",
                 isOnline : true,
                 id : 5,
-                path : "user5"
+                path : "user5",
+                timestamp: "4:03"
             }, 
             messageRecived : ["Hello Brother" , "Any plans for sunday ?"],
         },
@@ -40,7 +52,8 @@
                 userName : "Ajay Joshi",
                 isOnline : false,
                 id : 2,
-                path : "user2"
+                path : "user2",
+                timestamp: "7:43"
             }, 
             messageRecived : ["Hello sir" , "we have recived your complaint" , "we will work on it asap" , "Thank You for cooperating"],
         }
@@ -50,7 +63,8 @@
                 userName : "Prachi Tiwari",
                 isOnline : true,
                 id : 6,
-                path : "user6"
+                path : "user6",
+                timestamp: "10:00"
             }, 
             messageRecived : ["hello bhaiya !! how are you" , "call me at 10:30 pls"],
         },

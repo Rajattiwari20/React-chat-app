@@ -10,6 +10,7 @@ function PresentConversations(props) {
       <>
         <Grid container>
             <Grid item md = {12} xs = {12} sm = {12} style = {{minHeight : "90vh", backgroundColor : "#EAEEF3"}} >
+              {/* using switch and Route provided by react-router-dom' for doing client side routing  */}
             <Switch>
                   <Route path="/user2" exact>
                     <CurrentConversation userId = {2} />
@@ -32,6 +33,7 @@ function PresentConversations(props) {
                   </Route>
                   
                   <Route>
+                    {/* default case if path is not define  */}
                     <NewConversation />
                   </Route>
             </Switch>

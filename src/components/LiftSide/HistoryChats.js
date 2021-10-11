@@ -2,9 +2,9 @@ import  React , {useState, useEffect, useContext}from 'react';
 import { makeStyles } from '@mui/styles';
 import {useHistory} from 'react-router-dom'
 import { Typography , Grid, Avatar, Button} from '@mui/material'
-import dummyData from '../data'
+import dummyData from '../../data'
 import CircleRoundedIcon from '@mui/icons-material/CircleRounded';
-import AppContext from '../components/AppContext'
+import AppContext from '../AppContext'
 
 const useStyles = makeStyles(theme => ({
 
@@ -23,8 +23,8 @@ const useStyles = makeStyles(theme => ({
 
 function HistoryChats(props) {
     
-    const classes = useStyles();
-
+    const classes = useStyles()
+    //using useContext hook to avoid props 
     const appContext = useContext(AppContext)
     const setNewMessage = appContext.value1
     const {searchString, filterMessages , setFilterMessages} = props
@@ -32,6 +32,7 @@ function HistoryChats(props) {
    
     let history = useHistory()
 
+    //adding messages to state 
     useEffect(()=> {
         dummyData.map((data) =>{
             if(data.isLogedIn){
@@ -40,6 +41,7 @@ function HistoryChats(props) {
         })
     }, [])
 
+    // filtering and creating new array accrording to user search
     useEffect(() =>{
         const newArray=messages.filter((message)=>{return(
             message.senderInfo.userName
@@ -50,6 +52,7 @@ function HistoryChats(props) {
     }, [searchString])
 
 
+  //on click will redirect to specific path using useHistory provided by react-router-dom and close the model
     const handelClick = (path) =>{
         history.push(path)
         setNewMessage([])
@@ -82,8 +85,11 @@ function HistoryChats(props) {
                                      <CircleRoundedIcon style = {{color : "red" , fontSize : "small"}} />      
                                   </Grid>
                                 }
-                                <Grid item md ={12} style ={{textAlign :"center"}}>
+                                <Grid item md ={10} style ={{textAlign :"center"}}>
                                     {message.messageRecived[0]}
+                                </Grid>
+                                <Grid item md ={2} style ={{textAlign :"center"}}>
+                                    {message.senderInfo.timestamp}
                                 </Grid>
                             </Grid>
                             </Button>

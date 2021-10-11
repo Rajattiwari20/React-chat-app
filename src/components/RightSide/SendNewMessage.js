@@ -1,6 +1,5 @@
 import  React , {useState} from 'react';
 import { Typography , Grid,TextField , InputAdornment, Button, Avatar} from '@mui/material'
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import SendIcon from '@mui/icons-material/Send';
 
 function SendNewMessage(props) {
@@ -10,7 +9,8 @@ function SendNewMessage(props) {
             value , 
             setValue,
             userData} = props
-            
+         
+    // get new message string and add it to state
     const handelChange = (e) =>{
         var newMessage = e.target.value
         setSenderMessage(
