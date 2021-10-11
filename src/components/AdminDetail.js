@@ -5,10 +5,6 @@ function AdminDetail(props) {
 
   const {data} = props
 
-  const handelClick = () => {
-    console.log("Click")
-  }
-
     return (
       <>
         { data && 

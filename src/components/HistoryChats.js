@@ -3,6 +3,8 @@ import { makeStyles } from '@mui/styles';
 import { Typography , Grid, Avatar, Button} from '@mui/material'
 import dummyData from '../data'
 import CircleRoundedIcon from '@mui/icons-material/CircleRounded';
+import {useHistory} from 'react-router-dom'
+
 
 const useStyles = makeStyles(theme => ({
 
@@ -23,6 +25,7 @@ function HistoryChats(props) {
     const classes = useStyles();
     const {searchString} = props
     const [messages , setMessages] = useState()
+    let history = useHistory()
     useEffect(()=>{
         dummyData.map((data) =>{
             if(data.isLogedIn){
@@ -31,13 +34,11 @@ function HistoryChats(props) {
         })
     }, [])
 
-    const handelClick = () => {
-        console.log("Click")
-      }
-
-    console.log("messages ==>" ,messages)
-    console.log("searchString===>" , searchString)
-   
+    const handelClick = (path) =>{
+        history.push(path)
+    }
+    // console.log("messages ==>" ,messages)
+    // console.log("searchString===>" , searchString)   
     // console.log("filterMessages ==>" , filterMessages)
     // const filterMessages = messages.filter(message => message.senderInfo.userName ==  searchString)
 
@@ -51,7 +52,7 @@ function HistoryChats(props) {
                     return(
                        
                         <Grid item md = {12} sm = {12} xs = {12} style = {{ marginTop : "5px" , padding : "10px"}}  key ={index}>
-                             <Button fullWidth className = {classes.historyBtn} >
+                             <Button fullWidth className = {classes.historyBtn} onClick= {() => handelClick(message.senderInfo.path)} >
                             <Grid container >
                                 <Grid item md ={3}>
                                     <Avatar alt="Pic" src= {message.senderInfo.photo} />
@@ -70,7 +71,7 @@ function HistoryChats(props) {
                                   </Grid>
                                 }
                                 <Grid item md ={12} style ={{textAlign :"center"}}>
-                                    {message.messageRecived}
+                                    {message.messageRecived[0]}
                                 </Grid>
                             </Grid>
                             </Button>

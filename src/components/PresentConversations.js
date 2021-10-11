@@ -1,13 +1,40 @@
 import  React from 'react';
 import { Typography , Grid} from '@mui/material'
 import CurrentConversation from './CurrentConversation'
+import NewConversation from './NewConversation'
+import { Route, Switch } from 'react-router-dom';
 
 function PresentConversations() {
+  
     return (
       <>
         <Grid container>
             <Grid item md = {12} xs = {12} sm = {12} style = {{minHeight : "90vh", backgroundColor : "#EAEEF3"}} >
-                <CurrentConversation/>
+            <Switch>
+                  <Route path="/user2" exact>
+                    <CurrentConversation userId = {2} />
+                  </Route>
+
+                  <Route path="/user3" exact>
+                    <CurrentConversation userId = {3} />
+                  </Route>
+                  
+                  <Route path="/user4" exact>
+                    <CurrentConversation userId = {4} />
+                  </Route>
+                  
+                  <Route path="/user5" exact>
+                    <CurrentConversation userId = {5} />
+                  </Route>
+                  
+                  <Route path="/user6" exact>
+                    <CurrentConversation userId = {6} />
+                  </Route>
+                  
+                  <Route>
+                    <NewConversation />
+                  </Route>
+            </Switch>
             </Grid>
         </Grid>
       </>

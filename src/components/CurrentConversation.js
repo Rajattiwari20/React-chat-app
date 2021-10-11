@@ -4,8 +4,10 @@ import SendNewMessage from './SendNewMessage'
 import NewConversation from './NewConversation'
 import dummyData from '../data'
 
-function CurrentConversation() {
+function CurrentConversation(props) {
 
+    const {userId} = props
+    console.log("userId ==>" , userId )
     const [data, setdata] = useState()
     const [value , setValue] = useState()
     const [senderMessage , setSenderMessage] = useState()
@@ -22,10 +24,10 @@ function CurrentConversation() {
         })
     }, [])
 
-    console.log("messages ==>" , messages)
+    // console.log("messages ==>" , messages)
 
         const handelClick = () =>{
-            console.log("senderMessage ==> " , senderMessage)
+            // console.log("senderMessage ==> " , senderMessage)
             setNewMessage([...newMessage , senderMessage])
             setValue('')
         }
@@ -42,7 +44,7 @@ function CurrentConversation() {
                              return(
                                  <>
                                 {
-                                message.senderInfo.id === 2 &&
+                                message.senderInfo.id === userId &&
                                 message.messageRecived.map((text, index) =>{
                                     return(
                                         <Grid container style ={{marginTop : "10px" }} >

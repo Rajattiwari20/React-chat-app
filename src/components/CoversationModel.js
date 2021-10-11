@@ -10,6 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import { TextField , Grid, InputAdornment, Typography, Button, Avatar} from '@mui/material'
 import dummyData from '../data'
+import {useHistory} from 'react-router-dom'
 
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -53,13 +54,15 @@ BootstrapDialogTitle.propTypes = {
 export default function CoversationModel(props) {
 
   const {open , setOpen} = props
+  let history = useHistory()
   
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleClick = (data) =>{
-    console.log("Data" , data)
+    history.push("user"+data.id)
+    setOpen(false);
   }
 
   return (
@@ -93,7 +96,7 @@ export default function CoversationModel(props) {
                             {
                                 data.isLogedIn ?
                                 <Grid item md ={3}>
-                                    <Button variant="text" >
+                                    <Button variant="text" onClick={() => handleClick(data)}>
                                         <AccountCircleOutlinedIcon/>  
                                     </Button>   
                                 </Grid>
