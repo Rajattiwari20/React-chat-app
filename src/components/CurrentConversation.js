@@ -1,18 +1,22 @@
-import  React, { useState , useEffect} from 'react';
+import  React, { useState , useEffect, useContext} from 'react';
 import { Typography , Grid , Avatar , Box} from '@mui/material'
 import SendNewMessage from './SendNewMessage'
 import NewConversation from './NewConversation'
 import dummyData from '../data'
+import AppContext from '../components/AppContext'
 
 function CurrentConversation(props) {
 
     const {userId} = props
-    console.log("userId ==>" , userId )
     const [data, setdata] = useState()
     const [value , setValue] = useState()
     const [senderMessage , setSenderMessage] = useState()
     const [messages , setMessages] = useState()
-    const [newMessage , setNewMessage] = useState([])
+    
+    const appContext = useContext(AppContext)
+    const setNewMessage = appContext.value1
+    const newMessage = appContext.value2
+
     
     useEffect(()=>{
         dummyData.map((data) =>{
@@ -24,13 +28,10 @@ function CurrentConversation(props) {
         })
     }, [])
 
-    // console.log("messages ==>" , messages)
-
-        const handelClick = () =>{
-            // console.log("senderMessage ==> " , senderMessage)
-            setNewMessage([...newMessage , senderMessage])
-            setValue('')
-        }
+    const handelClick = () =>{
+        setNewMessage([...newMessage , senderMessage])
+        setValue('')
+    }
 
     return (
       <>
@@ -56,6 +57,7 @@ function CurrentConversation(props) {
                                         </Grid>
                                         </Grid>
                                     )
+
                                 } )
                                
                                 }
@@ -63,11 +65,19 @@ function CurrentConversation(props) {
                              )
                          })
                     }
+
                     {   
                          newMessage.map((message , index) =>{
                              return(
                                  <>
-                                <h4 key ={index} style ={{marginLeft: "10px" , marginTop : "10px" , textAlign : "right"}} >{message} </h4>  
+                                 <Grid container style ={{marginTop : "10px" }}  >
+                                <Grid item md ={0}>
+                                    <Avatar alt="Pic" src= {data.photo} />
+                                </Grid>
+                                <Grid item md ={10}>
+                                <h4 key ={index} style ={{marginLeft: "10px" , marginTop : "10px" }} >{message} </h4> 
+                                </Grid>
+                                </Grid> 
                                 </>
                              )
                          })

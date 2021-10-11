@@ -4,7 +4,7 @@ import CurrentConversation from './CurrentConversation'
 import NewConversation from './NewConversation'
 import { Route, Switch } from 'react-router-dom';
 
-function PresentConversations() {
+function PresentConversations(props) {
   
     return (
       <>
@@ -16,19 +16,19 @@ function PresentConversations() {
                   </Route>
 
                   <Route path="/user3" exact>
-                    <CurrentConversation userId = {3} />
+                    <CurrentConversation userId = {3}  />
                   </Route>
                   
                   <Route path="/user4" exact>
-                    <CurrentConversation userId = {4} />
+                    <CurrentConversation userId = {4}  />
                   </Route>
                   
                   <Route path="/user5" exact>
-                    <CurrentConversation userId = {5} />
+                    <CurrentConversation userId = {5}  />
                   </Route>
                   
                   <Route path="/user6" exact>
-                    <CurrentConversation userId = {6} />
+                    <CurrentConversation userId = {6}  />
                   </Route>
                   
                   <Route>

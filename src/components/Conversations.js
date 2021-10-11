@@ -21,8 +21,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-
-function Conversations() {
+function Conversations(props) {
   
     const classes = useStyles();
     const [showConversationMoldel , setShowConversationMoldel] = useState(false)

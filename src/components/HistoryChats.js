@@ -1,10 +1,10 @@
-import  React , {useState, useEffect}from 'react';
+import  React , {useState, useEffect, useContext}from 'react';
 import { makeStyles } from '@mui/styles';
+import {useHistory} from 'react-router-dom'
 import { Typography , Grid, Avatar, Button} from '@mui/material'
 import dummyData from '../data'
 import CircleRoundedIcon from '@mui/icons-material/CircleRounded';
-import {useHistory} from 'react-router-dom'
-
+import AppContext from '../components/AppContext'
 
 const useStyles = makeStyles(theme => ({
 
@@ -22,7 +22,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function HistoryChats(props) {
+    
     const classes = useStyles();
+
+    const appContext = useContext(AppContext)
+    const setNewMessage = appContext.value1
+       
     const {searchString} = props
     const [messages , setMessages] = useState()
     let history = useHistory()
@@ -36,6 +41,7 @@ function HistoryChats(props) {
 
     const handelClick = (path) =>{
         history.push(path)
+        setNewMessage([])
     }
     // console.log("messages ==>" ,messages)
     // console.log("searchString===>" , searchString)   

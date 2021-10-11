@@ -11,8 +11,6 @@ function SendNewMessage(props) {
             setValue,
             userData} = props
 
-            console.log("userData" , userData)
- 
     const handelChange = (e) =>{
         var newMessage = e.target.value
         setSenderMessage(
